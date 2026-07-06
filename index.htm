@@ -1,407 +1,450 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Keeping the Data | Alizae Brown</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f5f5f5;
-      --text: #222;
-      --primary: #0f3057;
-      --accent: #00c2cb;
-      --card: #ffffff;
-      --highlight: #e0f7fa;
-    }
-    [data-theme="dark"] {
-      --bg: #1e1e1e;
-      --text: #f1f1f1;
-      --primary: #142d4c;
-      --accent: #3bc8c8;
-      --card: #2c2c2c;
-      --highlight: #263238;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keeping the Data | Alizae Brown</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f6f6f2;
+  --text: #1b1b1b;
+  --navy: #0a2540;
+  --evergreen: #1b4332;
+  --orange: #f4791f;
+  --card: #ffffff;
+  --highlight: #e7f2ea;
+  --muted: #5a6b63;
+}
+[data-theme="dark"] {
+  --bg: #0d1512;
+  --text: #f1f1f1;
+  --navy: #081a2c;
+  --evergreen: #14382a;
+  --orange: #ff9142;
+  --card: #16211c;
+  --highlight: #142a21;
+  --muted: #a9b8b1;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+.navbar {
+  position: sticky; top: 0; width: 100%;
+  background-color: var(--navy);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2rem; z-index: 1000;
+}
+.navbar h2 { color: white; margin: 0; font-size: 1.5rem; letter-spacing: 1px; }
+.navbar ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+.navbar a { color: white; text-decoration: none; font-weight: 500; }
+.navbar a:hover { color: var(--orange); }
+.theme-toggle { background: transparent; border: 1px solid white; color: white; padding: 0.3rem 0.8rem; border-radius: 5px; cursor: pointer; }
 
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background-color: var(--primary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 1000;
-    }
-    .navbar h2 {
-      color: white;
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .navbar a:hover {
-      color: var(--accent);
-    }
-    .theme-toggle {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, var(--primary), var(--accent));
-      color: white;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero .highlight {
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-weight: bold;
-    }
-
-    .skills-bar {
-  background-color: var(--highlight);
-  overflow: hidden;
-  padding: 1rem 0;
-  font-size: 1rem;
-  font-weight: 600;
+.hero {
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy), var(--evergreen));
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem 4rem;
 }
-
-.skills-bar .marquee {
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.5; }
+.hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+.badge {
   display: inline-block;
-  white-space: nowrap;
-  will-change: transform;
-  animation: marquee 30s linear infinite;
+  border: 2px solid var(--orange);
+  border-radius: 999px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
 }
-
-.skills-bar span {
-  display: inline-block;
-  margin-right: 3rem;
+.badge span { color: var(--orange); }
+.hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
-
-@keyframes marquee {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+.hero h1 .accent { color: var(--orange); }
+.hero .tagline { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
+.hero p.subtitle { font-size: 1.05rem; max-width: 620px; margin: 0 auto 2rem; color: rgba(255,255,255,0.9); }
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn {
+  display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px;
+  font-weight: 700; text-decoration: none; cursor: pointer; border: none; font-size: 1rem;
 }
+.btn-primary { background-color: var(--orange); color: white; }
+.btn-outline { background: transparent; color: white; border: 2px solid white; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-outline:hover { background: rgba(255,255,255,0.15); }
+.social-row { display: flex; gap: 1rem; justify-content: center; }
+.social-circle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: white; text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.social-circle:hover { background: var(--orange); transform: translateY(-3px); }
+.social-circle svg { width: 20px; height: 20px; fill: currentColor; }
 
+.skills-bar { background-color: var(--highlight); overflow: hidden; padding: 1rem 0; font-size: 1rem; font-weight: 600; position: relative; }
+.skills-bar .marquee { display: inline-block; white-space: nowrap; will-change: transform; animation: marquee 32s linear infinite; }
+.skills-bar span { display: inline-block; margin-right: 3rem; }
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    .section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+.section { padding: 4rem 2rem; text-align: center; max-width: 1100px; margin: 0 auto; }
+.section h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.section .kicker { color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; }
+.about-text { max-width: 700px; margin: 1rem auto 2.5rem; font-size: 1.05rem; line-height: 1.7; color: var(--text); }
 
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .card {
-      width: 300px;
-      height: 200px;
-      perspective: 1000px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease;
-    }
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-    .card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: var(--card);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-    .card-front img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-    .card-front h3 {
-      margin: 0.5rem;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-    .card-back {
-      transform: rotateY(180deg);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: var(--text);
-      text-align: center;
-    }
-    .card-back a {
-      margin-top: 0.5rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .card-back a:hover {
-      text-decoration: underline;
-    }
+.skill-groups { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+.skill-card {
+  background: var(--card); border-radius: 10px; padding: 1.5rem; width: 260px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08); text-align: left;
+}
+.skill-card h4 { margin: 0 0 0.8rem; color: var(--evergreen); border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 0.3rem; }
+[data-theme="dark"] .skill-card h4 { color: var(--orange); }
+.skill-card ul { margin: 0; padding-left: 1.1rem; color: var(--text); }
+.skill-card li { margin-bottom: 0.4rem; }
 
-    .contact-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .contact-popup {
-      position: fixed;
-      bottom: 70px;
-      right: 20px;
-      background-color: var(--card);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 10px;
-      padding: 1rem;
-      display: none;
-      z-index: 1002;
-    }
-    .contact-popup a {
-      display: block;
-      margin: 0.5rem 0;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .contact-popup a:hover {
-      color: var(--accent);
-    }
+.cert-box {
+  margin-top: 2.5rem; background: var(--highlight); border-left: 4px solid var(--orange);
+  border-radius: 8px; padding: 1.2rem 1.5rem; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;
+}
+.cert-box strong { color: var(--evergreen); }
+[data-theme="dark"] .cert-box strong { color: var(--orange); }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: var(--card);
-      color: var(--text);
-    }
+.timeline { text-align: left; max-width: 750px; margin: 2rem auto 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 90px; top: 0; bottom: 0; width: 2px; background: var(--orange); }
+.timeline-item { position: relative; padding: 0 0 2.2rem 130px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-year {
+  position: absolute; left: 0; top: 0; width: 75px; text-align: right;
+  font-weight: 700; color: var(--orange); font-size: 0.9rem;
+}
+.timeline-item::after {
+  content: ""; position: absolute; left: 84px; top: 4px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--evergreen); border: 3px solid var(--orange);
+}
+.timeline-item h4 { margin: 0 0 0.2rem; font-size: 1.1rem; }
+.timeline-item .company { font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; display: block; }
+.timeline-item p { margin: 0; color: var(--text); line-height: 1.5; }
 
-    .tiny-dog {
-      position: fixed;
-      bottom: 10px;
-      left: -100px;
-      width: 64px;
-      z-index: 9999;
-      animation: dogWalk 40s linear infinite;
-    }
-    @keyframes dogWalk {
-      0% { left: -100px; }
-      100% { left: 110%; }
-    }
-  </style>
+.card-container { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
+.card { width: 300px; height: 210px; perspective: 1000px; opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+.card.show { opacity: 1; transform: translateY(0); }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+.card:hover .card-inner { transform: rotateY(180deg); }
+.card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; overflow: hidden; background-color: var(--card); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+.card-front { display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(150deg, var(--navy), var(--evergreen)); color: white; padding: 1rem; }
+.card-front .icon { font-size: 2.8rem; margin-bottom: 0.6rem; }
+.card-front h3 { margin: 0; font-size: 1.15rem; text-align: center; }
+.card-back { transform: rotateY(180deg); padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; color: var(--text); text-align: center; }
+.card-back a { margin-top: 0.7rem; color: var(--orange); text-decoration: none; font-weight: bold; }
+.card-back a:hover { text-decoration: underline; }
+
+.contact-cta { background: linear-gradient(135deg, var(--evergreen), var(--navy)); color: white; border-radius: 16px; padding: 3rem 2rem; }
+.contact-cta h2 { margin-top: 0; }
+.contact-cta p { color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto 1.5rem; }
+
+.contact-button { position: fixed; bottom: 20px; right: 20px; background-color: var(--orange); color: white; border: none; padding: 0.8rem 1.2rem; font-size: 1rem; border-radius: 8px; cursor: pointer; z-index: 1001; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
+.contact-popup { position: fixed; bottom: 70px; right: 20px; background-color: var(--card); box-shadow: 0 4px 12px rgba(0,0,0,0.2); border-radius: 10px; padding: 1rem; display: none; z-index: 1002; }
+.contact-popup a { display: block; margin: 0.5rem 0; color: var(--text); text-decoration: none; }
+.contact-popup a:hover { color: var(--orange); }
+
+footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); color: var(--text); }
+
+.tiny-dog { position: fixed; bottom: 10px; left: -100px; width: 64px; z-index: 9999; animation: dogWalk 40s linear infinite; }
+@keyframes dogWalk { 0% { left: -100px; } 100% { left: 110%; } }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.1rem; }
+  .timeline::before { left: 60px; }
+  .timeline-item { padding-left: 90px; }
+  .timeline-year { width: 50px; font-size: 0.75rem; }
+  .timeline-item::after { left: 54px; }
+}
+</style>
 </head>
 <body>
-  <nav class="navbar">
-    <h2>Alizae Brown</h2>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-    </ul>
-    <button class="theme-toggle" onclick="toggleTheme()">☀️/🌙</button>
-  </nav>
+<nav class="navbar">
+<h2>Alizae Brown</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="theme-toggle" onclick="toggleTheme()">☀️/🌙</button>
+</nav>
 
-  <section class="hero">
-    <h1>Keeping the Data</h1>
-    <p>I'm an aspiring data analyst with a passion for uncovering patterns and telling compelling stories through data. My background blends curiosity, communication, and creativity—I enjoy diving into messy datasets, cleaning them up, and delivering insights that drive action. With hands-on experience in Tableau, SQL, Python, and Excel, I’ve built interactive dashboards, automated workflows, and explored global trends across industries. I'm especially drawn to projects that bridge design with data and help people see the bigger picture through simple, clear visualizations.</p>    <div class="highlight">Data + Design + Drive</div>
-  </section>
+<section class="hero">
+<canvas id="particles"></canvas>
+<div class="hero-content">
+<div class="badge">DATA <span>ANALYST</span> PORTFOLIO</div>
+<h1>ALIZAE<br><span class="accent">BROWN</span></h1>
+<p class="tagline">Turning Data Into Decisions</p>
+<p class="subtitle">Data analyst with 10+ years in operations and insurance, now channeling that experience into dashboards, clean data, and decisions people can actually act on. Currently at USAA; previously built enterprise-wide reporting tools at Target.</p>
+<div class="hero-ctas">
+<a href="#projects" class="btn btn-primary">View Projects</a>
+<a href="#contact" class="btn btn-outline">Get In Touch</a>
+</div>
+<div class="social-row">
+<a class="social-circle" href="https://www.linkedin.com/in/alizaebrowncsm/" target="_blank" aria-label="LinkedIn">in</a>
+<a class="social-circle" href="https://github.com/databyalizae" target="_blank" aria-label="GitHub">GH</a>
+<a class="social-circle" href="mailto:databyalizae@gmail.com" aria-label="Email">@</a>
+</div>
+</div>
+</section>
 
- <div class="skills-bar">
-  <div class="marquee">
-    <span>💻 Tableau</span>
-    <span>📊 SQL</span>
-    <span>🐍 Python (learning!)</span>
-    <span>🌐 HTML/CSS</span>
-    <span>🧹 Data Cleaning</span>
-    <span>📈 Visualization</span>
-    <span>🗣️ Storytelling</span>
-    <!-- Duplicate content to make scrolling seamless -->
-    <span>💻 Tableau</span>
-    <span>📊 SQL</span>
-    <span>🐍 Python (learning!)</span>
-    <span>🌐 HTML/CSS</span>
-    <span>🧹 Data Cleaning</span>
-    <span>📈 Visualization</span>
-    <span>🗣️ Storytelling</span>
-  </div>
+<div class="skills-bar">
+<div class="marquee">
+<span>💻 Tableau</span>
+<span>📊 SQL</span>
+<span>🐍 Python (Learning)</span>
+<span>📈 Power BI</span>
+<span>📑 Excel</span>
+<span>🧹 Data Cleaning</span>
+<span>🗣️ Storytelling</span>
+<span>💻 Tableau</span>
+<span>📊 SQL</span>
+<span>🐍 Python (Learning)</span>
+<span>📈 Power BI</span>
+<span>📑 Excel</span>
+<span>🧹 Data Cleaning</span>
+<span>🗣️ Storytelling</span>
+</div>
 </div>
 
-
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>I’m an aspiring data analyst with a creative twist. My background blends analytical thinking with storytelling, and I love building projects that bring clarity and character to raw data.</p>
-  </section>
-
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <div class="card-container">
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <img src="https://static.euronews.com/articles/stories/07/88/63/12/432x243_cmsv2_cb4f2432-60df-5cbb-a0c6-5e902e41ae3a-7886312.jpg" alt="Rail Dashboard">
-          <h3>Rail Usage Dashboard</h3>
-        </div>
-        <div class="card-back">
-          <p>Visualized global rail travel patterns using Tableau. Focused on expansion insights.</p>
-          <a href="https://public.tableau.com/app/profile/alizae.brown/viz/ProjectPart2Take2/Conclusion" target="_blank">View Project</a>
-        </div>
-      </div></div>
-
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <img src="https://mrkaran.dev/images/gullak-cover.png" alt="Python Expense Tracker">
-          <h3>Expense Tracker (Python)</h3>
-        </div>
-        <div class="card-back">
-          <p>Terminal app with persistent storage using JSON. Budget tracking made easy!</p>
-          <a href="https://github.com/keepingthestoke/expense-tracker" target="_blank">View Code</a>
-        </div>
-      </div></div>
-
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <img src="https://i.imgur.com/YBdEJMB.png" alt="Portfolio">
-          <h3>Web Portfolio</h3>
-        </div>
-        <div class="card-back">
-          <p>This portfolio! Built with HTML, CSS, and JS. Featuring dark mode + animation.</p>
-          <a href="https://github.com/keepingthestoke/keepingthestoke.github.io" target="_blank">View Code</a>
-        </div>
-      </div></div>
-
-      <div class="card"><div class="card-inner">
-        <div class="card-front">
-          <img src="https://www.nyc.gov/assets/hpd/images/content/pages/about/affordable-housing.jpg" alt="NYC Housing Market">
-          <h3>NYC Housing Market</h3>
-        </div>
-        <div class="card-back">
-          <p>Tableau dashboard comparing NYC housing prices by ZIP code and square footage.</p>
-          <a href="https://public.tableau.com/app/profile/alizae.brown/viz/NYCHousingInsights/Overview" target="_blank">View Project</a>
-        </div>
-      </div></div>
-
-     <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="https://i.imgur.com/KhR27OP.png" alt="World Bank Analysis">
-        <h3>World Bank Stock Analysis</h3>
-      </div>
-    <div class="card-back">
-      <p>Tableau dashboard exploring economic indicators World Bank Stock between companies.</p>
-      <a href="https://public.tableau.com/views/ProjectPart3_17322260102710/Dashboard1" target="_blank">View Dashboard</a>
-    </div>
-  </div>
+<section class="section" id="about">
+<div class="kicker">About Me</div>
+<h2>Data + Design + Drive</h2>
+<p class="about-text">I'm a data analyst with an operations and insurance background, currently at USAA. After years spent turning shop-floor chaos into clear dashboards at Target and streamlining member workflows in insurance, I made the leap into analytics full-time, earning a Data Analytics &amp; Agile Leadership certification along the way. I like the parts of the job most people skip: cleaning messy data, asking better questions, and building visuals that make the answer obvious.</p>
+<div class="skill-groups">
+<div class="skill-card">
+<h4>Analytics &amp; Visualization</h4>
+<ul>
+<li>Tableau</li>
+<li>Power BI (growing)</li>
+<li>Excel</li>
+<li>Data Visualization</li>
+</ul>
 </div>
+<div class="skill-card">
+<h4>Data &amp; Programming</h4>
+<ul>
+<li>SQL</li>
+<li>Python (learning)</li>
+<li>Data Cleaning</li>
+</ul>
+</div>
+<div class="skill-card">
+<h4>Systems &amp; Soft Skills</h4>
+<ul>
+<li>Salesforce &amp; Guidewire</li>
+<li>Stakeholder Communication</li>
+<li>Data Storytelling</li>
+</ul>
+</div>
+</div>
+<div class="cert-box">
+<strong>Data Analytics, Agile Leadership Certificate</strong> — Reynolds and Reynolds Sales Leadership Institute, Issued Dec 2024
+</div>
+</section>
 
-  </section>
+<section class="section" id="experience">
+<div class="kicker">Background</div>
+<h2>Experience</h2>
+<div class="timeline">
+<div class="timeline-item">
+<span class="timeline-year">2024 – Present</span>
+<h4>Insurance Professional III – Service</h4>
+<span class="company">USAA</span>
+<p>Use Salesforce and Guidewire to guide member coverage conversations and maintain a 100% member satisfaction record across 2+ years.</p>
+</div>
+<div class="timeline-item">
+<span class="timeline-year">2021 – 2023</span>
+<h4>General Merchandise Team Leader</h4>
+<span class="company">Target</span>
+<p>Built custom dashboards consolidating sales, HR, inventory, and workload data across 15+ departments, giving 40+ team members and store leadership daily visibility and saving 25–50 leadership hours per week.</p>
+</div>
+<div class="timeline-item">
+<span class="timeline-year">2016 – 2021</span>
+<h4>Guest Service Team Leader</h4>
+<span class="company">Target</span>
+<p>Led teams of 20+ associates, using service metrics to drive accountability and maintain a customer-centric floor.</p>
+</div>
+<div class="timeline-item">
+<span class="timeline-year">2014 – 2016</span>
+<h4>Sales Floor Team Member</h4>
+<span class="company">Target</span>
+<p>Started my retail career here, building the operational instincts that now shape how I approach data.</p>
+</div>
+</div>
+</section>
 
-  <footer>
-    <p>Made with curiosity + caffeine ☕ | © <span id="year"></span> Alizae Brown</p>
-  </footer>
+<section class="section" id="projects">
+<div class="kicker">Portfolio</div>
+<h2>Projects</h2>
+<div class="card-container">
 
-  <button class="contact-button" onmouseenter="showPopup()" onmouseleave="hidePopup()">Get in Touch</button>
-  <div class="contact-popup" id="popup" onmouseenter="showPopup()" onmouseleave="hidePopup()">
-    <a href="https://www.linkedin.com/in/alizaebrowncsm/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/keepingthestoke" target="_blank">GitHub</a>
-    <a href="mailto:keepingthedata@gmail.com">Email Me</a>
-  </div>
-  <img class="tiny-dog" src="https://i.imgur.com/q2gy6Qy.png" alt="Pixel dog walking across screen" />
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">🚄</div><h3>Rail Usage Dashboard</h3></div>
+<div class="card-back">
+<p>Visualized global rail travel patterns using Tableau, focused on expansion insights.</p>
+<a href="https://public.tableau.com/app/profile/alizae.brown/viz/ProjectPart2Take2/Conclusion" target="_blank">View Project</a>
+</div>
+</div></div>
 
-  <script>
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", current === "light" ? "dark" : "light");
-    }
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">🛍️</div><h3>Retail Sales &amp; Profitability Analysis</h3></div>
+<div class="card-back">
+<p>Analyzed the Superstore dataset to identify which product lines and regions drive — or erode — profitability.</p>
+<a href="https://public.tableau.com/app/profile/alizae.brown/viz/SuperStoreworksheet_17290121826700/Region" target="_blank">View Project</a>
+</div>
+</div></div>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">📈</div><h3>S&amp;P Stock Market Performance Analysis</h3></div>
+<div class="card-back">
+<p>Visualized ~620,000 rows of 5-year stock data across hundreds of companies — price trends, volume, and comparative performance.</p>
+<a href="https://public.tableau.com/views/ProjectPart3_17322260102710/Dashboard1" target="_blank">View Dashboard</a>
+</div>
+</div></div>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">🏙️</div><h3>NYC Real Estate Market Analysis</h3></div>
+<div class="card-back">
+<p>Analyzed 84,500+ NYC transactions to uncover pricing trends by borough, neighborhood, and zip code.</p>
+<a href="https://public.tableau.com/app/profile/alizae.brown/viz/NYCHousingInsights/Overview" target="_blank">View Project</a>
+</div>
+</div></div>
+
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">💰</div><h3>Expense Tracker (Python)</h3></div>
+<div class="card-back">
+<p>Terminal app with persistent storage using JSON. Budget tracking made easy!</p>
+<a href="https://github.com/databyalizae/Expense-Tracker" target="_blank">View Code</a>
+</div>
+</div></div>
+
+<div class="card"><div class="card-inner">
+<div class="card-front"><div class="icon">💻</div><h3>Web Portfolio</h3></div>
+<div class="card-back">
+<p>This portfolio! Built with HTML, CSS, and JS — featuring dark mode and interactive animation.</p>
+<a href="https://github.com/databyalizae/databyalizae.github.io" target="_blank">View Code</a>
+</div>
+</div></div>
+
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="contact-cta">
+<h2>Let's Connect</h2>
+<p>Actively seeking a junior data analyst role where I can contribute from day one. Always happy to talk data, dashboards, or ideas.</p>
+<div class="hero-ctas">
+<a href="https://www.linkedin.com/in/alizaebrowncsm/" target="_blank" class="btn btn-primary">LinkedIn</a>
+<a href="https://github.com/databyalizae" target="_blank" class="btn btn-outline">GitHub</a>
+<a href="mailto:databyalizae@gmail.com" class="btn btn-outline">Email Me</a>
+</div>
+</div>
+</section>
+
+<footer>
+<p>Made with curiosity + caffeine ☕ | © <span id="year"></span> Alizae Brown</p>
+</footer>
+
+<button class="contact-button" onmouseenter="showPopup()" onmouseleave="hidePopup()">Get in Touch</button>
+<div class="contact-popup" id="popup" onmouseenter="showPopup()" onmouseleave="hidePopup()">
+<a href="https://www.linkedin.com/in/alizaebrowncsm/" target="_blank">LinkedIn</a>
+<a href="https://github.com/databyalizae" target="_blank">GitHub</a>
+<a href="mailto:databyalizae@gmail.com">Email Me</a>
+</div>
+<img class="tiny-dog" src="https://i.imgur.com/q2gy6Qy.png" alt="Pixel dog walking across screen" />
+
+<script>
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme");
+  document.documentElement.setAttribute("data-theme", current === "light" ? "dark" : "light");
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add("show"); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll(".card").forEach(card => observer.observe(card));
+
+function showPopup() { document.getElementById("popup").style.display = "block"; }
+function hidePopup() { document.getElementById("popup").style.display = "none"; }
+
+(function () {
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener("resize", resize);
+
+  function init() {
+    resize();
+    particles = Array.from({ length: 45 }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4
+    }));
+    animate();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) {
+          ctx.strokeStyle = "rgba(244,121,31," + (1 - dist / 140) * 0.5 + ")";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
         }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".card").forEach(card => observer.observe(card));
+      }
+      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      ctx.beginPath();
+      ctx.arc(particles[i].x, particles[i].y, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(animate);
+  }
 
-    function showPopup() {
-      document.getElementById("popup").style.display = "block";
-    }
-    function hidePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
-  </script>
+  init();
+})();
+</script>
 </body>
 </html>
