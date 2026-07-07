@@ -43,6 +43,7 @@ display: flex; justify-content: space-between; align-items: center;
 padding: 1rem 2rem; z-index: 1000;
 }
 .navbar h2 { color: white; margin: 0; font-size: 1.5rem; letter-spacing: 1px; }
+.nav-logo { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--orange); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.5px; color: white; background: rgba(255,255,255,0.08); }
 .navbar ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
 .navbar a { color: white; text-decoration: none; font-weight: 500; }
 .navbar a:hover { color: var(--orange); }
@@ -186,7 +187,7 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 </head>
 <body>
 <nav class="navbar">
-<h2>Alizae Brown</h2>
+<div class="nav-logo" aria-label="Alizae Brown">AB</div>
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
