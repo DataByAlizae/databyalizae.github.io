@@ -8,39 +8,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --bg: #f6f6f2;
-  --text: #1b1b1b;
-  --navy: #0a2540;
-  --evergreen: #1b4332;
-  --orange: #f4791f;
-  --card: #ffffff;
-  --highlight: #e7f2ea;
-  --muted: #5a6b63;
+--bg: #f6f6f2;
+--text: #1b1b1b;
+--navy: #0a2540;
+--evergreen: #1b4332;
+--orange: #f4791f;
+--card: #ffffff;
+--highlight: #e7f2ea;
+--muted: #5a6b63;
 }
 [data-theme="dark"] {
-  --bg: #0d1512;
-  --text: #f1f1f1;
-  --navy: #081a2c;
-  --evergreen: #14382a;
-  --orange: #ff9142;
-  --card: #16211c;
-  --highlight: #142a21;
-  --muted: #a9b8b1;
+--bg: #0d1512;
+--text: #f1f1f1;
+--navy: #081a2c;
+--evergreen: #14382a;
+--orange: #ff9142;
+--card: #16211c;
+--highlight: #142a21;
+--muted: #a9b8b1;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.3s, color 0.3s;
+font-family: 'Segoe UI', sans-serif;
+background-color: var(--bg);
+color: var(--text);
+transition: background 0.3s, color 0.3s;
 }
 .navbar {
-  position: sticky; top: 0; width: 100%;
-  background-color: var(--navy);
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 2rem; z-index: 1000;
+position: sticky; top: 0; width: 100%;
+background-color: var(--navy);
+display: flex; justify-content: space-between; align-items: center;
+padding: 1rem 2rem; z-index: 1000;
 }
 .navbar h2 { color: white; margin: 0; font-size: 1.5rem; letter-spacing: 1px; }
 .navbar ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
@@ -49,40 +49,42 @@ body {
 .theme-toggle { background: transparent; border: 1px solid white; color: white; padding: 0.3rem 0.8rem; border-radius: 5px; cursor: pointer; }
 
 .hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--navy), var(--evergreen));
-  color: white;
-  text-align: center;
-  padding: 5rem 2rem 4rem;
+position: relative;
+overflow: hidden;
+background: linear-gradient(135deg, var(--navy), var(--evergreen));
+color: white;
+text-align: center;
+padding: 5rem 2rem 4rem;
 }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.5; }
 .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+.hero-photo { width: 108px; height: 108px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.3rem; border: 3px solid var(--orange); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .badge {
-  display: inline-block;
-  border: 2px solid var(--orange);
-  border-radius: 999px;
-  padding: 0.4rem 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
+display: inline-block;
+border: 2px solid var(--orange);
+border-radius: 999px;
+padding: 0.4rem 1.2rem;
+font-weight: 700;
+letter-spacing: 1px;
+font-size: 0.9rem;
+margin-bottom: 1.5rem;
 }
 .badge span { color: var(--orange); }
 .hero h1 {
-  font-size: 3.2rem;
-  line-height: 1.1;
-  margin: 0 0 1rem;
-  font-weight: 800;
-  text-transform: uppercase;
+font-size: 3.2rem;
+line-height: 1.1;
+margin: 0 0 1rem;
+font-weight: 800;
+text-transform: uppercase;
 }
 .hero h1 .accent { color: var(--orange); }
 .hero .tagline { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
 .hero p.subtitle { font-size: 1.05rem; max-width: 620px; margin: 0 auto 2rem; color: rgba(255,255,255,0.9); }
 .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
 .btn {
-  display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px;
-  font-weight: 700; text-decoration: none; cursor: pointer; border: none; font-size: 1rem;
+display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px;
+font-weight: 700; text-decoration: none; cursor: pointer; border: none; font-size: 1rem;
 }
 .btn-primary { background-color: var(--orange); color: white; }
 .btn-outline { background: transparent; color: white; border: 2px solid white; }
@@ -90,16 +92,15 @@ body {
 .btn-outline:hover { background: rgba(255,255,255,0.15); }
 .social-row { display: flex; gap: 1rem; justify-content: center; }
 .social-circle {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  display: flex; align-items: center; justify-content: center;
-  color: white; text-decoration: none; transition: background 0.2s, transform 0.2s;
+width: 44px; height: 44px; border-radius: 50%;
+background: rgba(255,255,255,0.12);
+display: flex; align-items: center; justify-content: center;
+color: white; text-decoration: none; transition: background 0.2s, transform 0.2s;
 }
 .social-circle:hover { background: var(--orange); transform: translateY(-3px); }
 .social-circle svg { width: 20px; height: 20px; fill: currentColor; }
-
 .skills-bar { background-color: var(--highlight); overflow: hidden; padding: 1rem 0; font-size: 1rem; font-weight: 600; position: relative; }
-.skills-bar .marquee { display: inline-block; white-space: nowrap; will-change: transform; animation: marquee 32s linear infinite; }
+.skills-bar .marquee { display: inline-block; white-space: nowrap; will-change: transform; animation: marquee 46s linear infinite; }
 .skills-bar span { display: inline-block; margin-right: 3rem; }
 @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
@@ -110,8 +111,8 @@ body {
 
 .skill-groups { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
 .skill-card {
-  background: var(--card); border-radius: 10px; padding: 1.5rem; width: 260px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08); text-align: left;
+background: var(--card); border-radius: 10px; padding: 1.5rem; width: 260px;
+box-shadow: 0 6px 15px rgba(0,0,0,0.08); text-align: left;
 }
 .skill-card h4 { margin: 0 0 0.8rem; color: var(--evergreen); border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 0.3rem; }
 [data-theme="dark"] .skill-card h4 { color: var(--orange); }
@@ -119,28 +120,31 @@ body {
 .skill-card li { margin-bottom: 0.4rem; }
 
 .cert-box {
-  margin-top: 2.5rem; background: var(--highlight); border-left: 4px solid var(--orange);
-  border-radius: 8px; padding: 1.2rem 1.5rem; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;
+margin-top: 2.5rem; background: var(--highlight); border-left: 4px solid var(--orange);
+border-radius: 8px; padding: 1.2rem 1.5rem; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;
 }
 .cert-box strong { color: var(--evergreen); }
 [data-theme="dark"] .cert-box strong { color: var(--orange); }
 
-.timeline { text-align: left; max-width: 750px; margin: 2rem auto 0; position: relative; }
-.timeline::before { content: ""; position: absolute; left: 90px; top: 0; bottom: 0; width: 2px; background: var(--orange); }
-.timeline-item { position: relative; padding: 0 0 2.2rem 130px; }
-.timeline-item:last-child { padding-bottom: 0; }
-.timeline-year {
-  position: absolute; left: 0; top: 0; width: 75px; text-align: right;
-  font-weight: 700; color: var(--orange); font-size: 0.9rem;
-}
-.timeline-item::after {
-  content: ""; position: absolute; left: 84px; top: 4px; width: 14px; height: 14px;
-  border-radius: 50%; background: var(--evergreen); border: 3px solid var(--orange);
-}
-.timeline-item h4 { margin: 0 0 0.2rem; font-size: 1.1rem; }
-.timeline-item .company { font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; display: block; }
-.timeline-item p { margin: 0; color: var(--text); line-height: 1.5; }
-
+/* ===== JOURNEY TIMELINE ===== */
+.journey { position: relative; max-width: 880px; margin: 2.5rem auto 0; padding: 1rem 0 0; }
+.journey-track { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px; background: rgba(0,0,0,0.08); border-radius: 4px; z-index: 0; overflow: hidden; }
+[data-theme="dark"] .journey-track { background: rgba(255,255,255,0.08); }
+.journey-track-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(var(--orange), var(--evergreen)); border-radius: 4px; }
+.journey-item { position: relative; width: 50%; padding: 0 0 3.2rem 0; z-index: 1; opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.journey-item.show { opacity: 1; transform: translateY(0); }
+.journey-item.left { left: 0; padding-right: 3.5rem; text-align: right; }
+.journey-item.right { left: 50%; padding-left: 3.5rem; text-align: left; }
+.journey-node { position: absolute; top: 0; width: 46px; height: 46px; border-radius: 50%; background: var(--card); border: 3px solid var(--orange); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 0 0 6px var(--bg), 0 6px 14px rgba(0,0,0,0.15); z-index: 2; }
+.journey-item.left .journey-node { right: -23px; }
+.journey-item.right .journey-node { left: -23px; }
+.journey-card { display: inline-block; text-align: left; background: var(--card); border-radius: 14px; padding: 1.3rem 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); max-width: 380px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+.journey-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(0,0,0,0.14); border-color: var(--orange); }
+.journey-date { display: inline-block; background: var(--highlight); color: var(--evergreen); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.5px; text-transform: uppercase; padding: 0.28rem 0.75rem; border-radius: 999px; margin-bottom: 0.6rem; }
+[data-theme="dark"] .journey-date { color: var(--orange); }
+.journey-card h4 { margin: 0 0 0.2rem; font-size: 1.08rem; }
+.journey-card .company { font-weight: 600; color: var(--muted); margin-bottom: 0.5rem; display: block; }
+.journey-card p { margin: 0; color: var(--text); line-height: 1.55; font-size: 0.95rem; }
 .card-container { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
 .card { width: 300px; height: 210px; perspective: 1000px; opacity: 0; transform: translateY(20px); transition: all 1s ease; }
 .card.show { opacity: 1; transform: translateY(0); }
@@ -168,12 +172,15 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 .tiny-dog { position: fixed; bottom: 10px; left: -100px; font-size: 2.5rem; z-index: 9999; animation: dogWalk 40s linear infinite; }
 @keyframes dogWalk { 0% { left: -100px; } 100% { left: 110%; } }
 
+@media (max-width: 768px) {
+.journey-track { left: 22px; margin-left: 0; }
+.journey-item, .journey-item.left, .journey-item.right { width: 100%; left: 0; text-align: left; padding: 0 0 3rem 3.4rem; }
+.journey-item.left .journey-node, .journey-item.right .journey-node { left: 0; right: auto; }
+.journey-card { max-width: 100%; }
+}
+
 @media (max-width: 600px) {
-  .hero h1 { font-size: 2.1rem; }
-  .timeline::before { left: 60px; }
-  .timeline-item { padding-left: 90px; }
-  .timeline-year { width: 50px; font-size: 0.75rem; }
-  .timeline-item::after { left: 54px; }
+.hero h1 { font-size: 2.1rem; }
 }
 </style>
 </head>
@@ -192,6 +199,7 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 <section class="hero">
 <canvas id="particles"></canvas>
 <div class="hero-content">
+<div class="hero-photo"><img src="headshot.jpg" alt="Alizae Brown" /></div>
 <div class="badge">DATA <span>ANALYST</span> PORTFOLIO</div>
 <h1>ALIZAE<br><span class="accent">BROWN</span></h1>
 <p class="tagline">Turning Data Into Decisions</p>
@@ -226,7 +234,6 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 <span>🗣️ Storytelling</span>
 </div>
 </div>
-
 <section class="section" id="about">
 <div class="kicker">About Me</div>
 <h2>Data + Design + Drive</h2>
@@ -259,59 +266,78 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 </div>
 </div>
 <div class="cert-box">
-<strong>Data Analytics, Agile Leadership Certificate</strong> — Reynolds and Reynolds Sales Leadership Institute, Issued Dec 2024
+<strong>Data Analytics, Agile Leadership Certificate</strong> &mdash; Reynolds and Reynolds Sales Leadership Institute, Issued Dec 2024
 </div>
 </section>
 
 <section class="section" id="experience">
 <div class="kicker">Background</div>
 <h2>Experience</h2>
-<div class="timeline">
-<div class="timeline-item">
-<span class="timeline-year">2019</span>
-<h4>Sales Floor / Guest Service</h4>
+<div class="journey">
+<div class="journey-track"><div class="journey-track-fill" id="journeyFill"></div></div>
+
+<div class="journey-item left">
+<div class="journey-node">🛍️</div>
+<div class="journey-card">
+<span class="journey-date">Nov 2014 &ndash; Oct 2018</span>
+<h4>Guest Service Advocate &amp; Sales Floor</h4>
 <span class="company">Target</span>
-<p>Started in retail and learned how operations actually run on the ground &mdash; early exposure to how messy real-world data gets when nobody's tracking it well.</p>
+<p>Started on the sales floor and guest service desk &mdash; handling returns, resolving issues, and getting a first-hand look at how messy real-world operations get without good data behind them.</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">2021</span>
+</div>
+
+<div class="journey-item right">
+<div class="journey-node">🤝</div>
+<div class="journey-card">
+<span class="journey-date">Oct 2018 &ndash; Apr 2021</span>
+<h4>Guest Service Team Leader</h4>
+<span class="company">Target</span>
+<p>Led a team of 20+ Guest Service Advocates, owned daily desk operations, and used proactive outreach to resolve concerns before they became escalations.</p>
+</div>
+</div>
+
+<div class="journey-item left">
+<div class="journey-node">📊</div>
+<div class="journey-card">
+<span class="journey-date">Apr 2021 &ndash; Sep 2023</span>
 <h4>General Merchandise Team Leader</h4>
 <span class="company">Target</span>
-<p>Inherited a reporting gap and built dashboards from scratch across 620K+ rows with no formal training &mdash; saving 25&ndash;50 leadership hours per week and getting adopted by 50+ stakeholders, including the store director.</p>
+<p>Spotted a store-wide reporting gap and built dashboards from scratch across 15+ departments &mdash; saving leadership 25&ndash;50 hours a week and giving 50+ team members, including the store director, daily visibility into their numbers.</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">2022</span>
-<h4>Member Services</h4>
+</div>
+
+<div class="journey-item right">
+<div class="journey-node">🛡️</div>
+<div class="journey-card">
+<span class="journey-date">Mar 2023 &ndash; Present</span>
+<h4>Insurance Professional III &ndash; Service</h4>
 <span class="company">USAA</span>
-<p>Moved into insurance, using Salesforce and Guidewire daily to manage policy data, track member history, and guide coverage conversations &mdash; maintaining a 100% MSAT record across 2+ years while rotating through property claims.</p>
+<p>Using Salesforce and Guidewire to manage policy data, track member history, and guide coverage conversations &mdash; maintaining a 100% member satisfaction record. Briefly rotated through property claims mentorship, picking up exposure to Xactimate estimating and mitigation workflows (not a claims adjuster role).</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">2023 &ndash; 2025</span>
-<h4>Property Insurance Claims</h4>
-<span class="company">USAA</span>
-<p>Deepened into the claims side of the business, learning how claims move, what carriers measure, and where the friction points are &mdash; the eventual thesis for Project Margot was born here.</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">Dec 2024</span>
-<h4>Data Analytics, Agile Leadership &amp; Sales Leadership Certifications</h4>
+
+<div class="journey-item left">
+<div class="journey-node">🎓</div>
+<div class="journey-card">
+<span class="journey-date">Dec 2024</span>
+<h4>Data Analytics &amp; Agile Leadership Certifications</h4>
 <span class="company">Reynolds and Reynolds Sales Leadership Institute</span>
-<p>Formal recognition of what had been informal practice for years.</p>
+<p>Formal recognition of what had been informal practice for years &mdash; Tableau, SQL, and leadership fundamentals, on paper.</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">2026</span>
+</div>
+
+<div class="journey-item right">
+<div class="journey-node">🚀</div>
+<div class="journey-card">
+<span class="journey-date">2026</span>
 <h4>The Pivot, Made Deliberate</h4>
 <span class="company">Independent Study &amp; Project Margot</span>
-<p>Built the technical toolkit to match the instinct &mdash; SQL, Tableau, Python &mdash; and shipped three Tableau Public projects (S&amp;P, NYC Real Estate, Superstore). Launched Project Margot, independent research asking whether digital claims payment adoption predicts lower complaint volumes across P&amp;C insurers.</p>
+<p>Built the technical toolkit to match the instinct: SQL, Tableau, Python. Shipped three Tableau Public projects and launched Project Margot, independent research on whether digital claims payment adoption predicts lower complaint volumes across P&amp;C insurers.</p>
 </div>
-<div class="timeline-item">
-<span class="timeline-year">Now</span>
-<h4>Data Analyst</h4>
-<span class="company">Actively Job Searching</span>
-<p>Not starting from zero. Just finally calling it what it's always been.</p>
 </div>
+
 </div>
 </section>
-
 <section class="section" id="projects">
 <div class="kicker">Portfolio</div>
 <h2>Projects</h2>
@@ -326,7 +352,7 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 </div></div>
 
 <div class="card"><div class="card-inner">
-<div class="card-front"><div class="icon">🛍️</div><h3>Retail Sales &amp; Profitability Analysis</h3></div>
+<div class="card-front"><div class="icon">🛒</div><h3>Retail Sales &amp; Profitability Analysis</h3></div>
 <div class="card-back">
 <p>Analyzed the Superstore dataset to identify which product lines and regions drive — or erode — profitability.</p>
 <a href="https://public.tableau.com/app/profile/alizae.brown/viz/SuperStoreworksheet_17290121826700/Region" target="_blank">View Project</a>
@@ -391,77 +417,98 @@ footer { text-align: center; padding: 2rem 1rem; background-color: var(--card); 
 <a href="mailto:databyalizae@gmail.com">Email Me</a>
 </div>
 <div class="tiny-dog" aria-hidden="true">🐕</div>
-
 <script>
 function toggleTheme() {
-  const current = document.documentElement.getAttribute("data-theme");
-  document.documentElement.setAttribute("data-theme", current === "light" ? "dark" : "light");
+const current = document.documentElement.getAttribute("data-theme");
+document.documentElement.setAttribute("data-theme", current === "light" ? "dark" : "light");
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add("show"); }
-  });
+entries.forEach(entry => {
+if (entry.isIntersecting) { entry.target.classList.add("show"); }
+});
 }, { threshold: 0.1 });
 document.querySelectorAll(".card").forEach(card => observer.observe(card));
+
+const journeyObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) { entry.target.classList.add("show"); }
+});
+}, { threshold: 0.25 });
+document.querySelectorAll(".journey-item").forEach(item => journeyObserver.observe(item));
+
+function updateJourneyFill() {
+const track = document.getElementById("journeyFill");
+const journey = document.querySelector(".journey");
+if (!track || !journey) return;
+const rect = journey.getBoundingClientRect();
+const vh = window.innerHeight || document.documentElement.clientHeight;
+const total = rect.height;
+const scrolled = Math.min(Math.max((vh * 0.5) - rect.top, 0), total);
+const pct = total > 0 ? (scrolled / total) * 100 : 0;
+track.style.height = pct + "%";
+}
+window.addEventListener("scroll", updateJourneyFill, { passive: true });
+window.addEventListener("resize", updateJourneyFill);
+updateJourneyFill();
 
 function showPopup() { document.getElementById("popup").style.display = "block"; }
 function hidePopup() { document.getElementById("popup").style.display = "none"; }
 
 (function () {
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-  let w, h, particles;
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let w, h, particles;
 
-  function resize() {
-    w = canvas.width = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-  }
-  window.addEventListener("resize", resize);
+function resize() {
+w = canvas.width = canvas.offsetWidth;
+h = canvas.height = canvas.offsetHeight;
+}
+window.addEventListener("resize", resize);
 
-  function init() {
-    resize();
-    particles = Array.from({ length: 45 }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4
-    }));
-    animate();
-  }
+function init() {
+resize();
+particles = Array.from({ length: 45 }, () => ({
+x: Math.random() * w,
+y: Math.random() * h,
+vx: (Math.random() - 0.5) * 0.4,
+vy: (Math.random() - 0.5) * 0.4
+}));
+animate();
+}
 
-  function animate() {
-    ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-    });
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          ctx.strokeStyle = "rgba(244,121,31," + (1 - dist / 140) * 0.5 + ")";
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-      ctx.fillStyle = "rgba(255,255,255,0.8)";
-      ctx.beginPath();
-      ctx.arc(particles[i].x, particles[i].y, 2, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    requestAnimationFrame(animate);
-  }
+function animate() {
+ctx.clearRect(0, 0, w, h);
+particles.forEach(p => {
+p.x += p.vx; p.y += p.vy;
+if (p.x < 0 || p.x > w) p.vx *= -1;
+if (p.y < 0 || p.y > h) p.vy *= -1;
+});
+for (let i = 0; i < particles.length; i++) {
+for (let j = i + 1; j < particles.length; j++) {
+const dx = particles[i].x - particles[j].x;
+const dy = particles[i].y - particles[j].y;
+const dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < 140) {
+ctx.strokeStyle = "rgba(244,121,31," + (1 - dist / 140) * 0.5 + ")";
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(particles[i].x, particles[i].y);
+ctx.lineTo(particles[j].x, particles[j].y);
+ctx.stroke();
+}
+}
+ctx.fillStyle = "rgba(255,255,255,0.8)";
+ctx.beginPath();
+ctx.arc(particles[i].x, particles[i].y, 2, 0, Math.PI * 2);
+ctx.fill();
+}
+requestAnimationFrame(animate);
+}
 
-  init();
+init();
 })();
 </script>
 </body>
